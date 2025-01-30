@@ -45,21 +45,21 @@ print("\nTask 3")
 
 def calculate_call_cost(call_cost, operator_from, operator_to):
     tariff_rates = {
-        "МТС": 1.5,
-        "Билайн": 1.2,
-        "Мегафон": 1.8,
-        "Теле2": 1.0
+        "Київстар": 1.5,
+        "Vodafone Україна": 1.2,
+        "lifecell": 1.8,
+        "3Mob": 1.0
     }
 
     if operator_from not in tariff_rates:
-        print("Помилка! Неправельно введено оператор вихідного дзвінка.")
+        print("Помилка! Невірно введено оператор вихідного дзвінка.")
         return None
     if operator_to not in tariff_rates:
-        print("Помилка! Невірно вказаний оператор приймаючий звінок.")
+        print("Помилка! Невірно введено оператор приймаючий звінок.")
         return None
 
     if call_cost <= 0:
-        print("Помилка! Вартість зозмови повинна бути додатня.")
+        print("Помилка! Вартість розмови повинна бути додатня.")
         return None
 
     rate_from = tariff_rates[operator_from]
@@ -71,11 +71,11 @@ def calculate_call_cost(call_cost, operator_from, operator_to):
 
 call_cost = float(input("Введіть вартість розмови: "))
 operator_from = input("Введіть оператора вихідного дзвінка (Київстар, Vodafone Україна, lifecell, 3Mob): ").strip().capitalize()
-operator_to = input("Введіть оператора приймаючопо розмову (Київстар, Vodafone Україна, lifecell, 3Mob): ").strip().capitalize()
+operator_to = input("Введіть оператора приймаючго розмову (Київстар, Vodafone Україна, lifecell, 3Mob): ").strip().capitalize()
 
 result = calculate_call_cost(call_cost, operator_from, operator_to)
 if result is not None:
-    print(f"Вартисть розмови: {result}")
+    print(f"Вартість розмови: {result}")
 
 
 
