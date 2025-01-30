@@ -44,7 +44,6 @@ for i in range(8):
 print("\nTask 3")
 
 def calculate_call_cost(call_cost, operator_from, operator_to):
-    # Создаем словарь с тарифами для разных операторов
     tariff_rates = {
         "МТС": 1.5,
         "Билайн": 1.2,
@@ -52,20 +51,17 @@ def calculate_call_cost(call_cost, operator_from, operator_to):
         "Теле2": 1.0
     }
 
-    # Проверяем, что выбранные операторы есть в словаре
     if operator_from not in tariff_rates:
-        print("Ошибка! Неправильно указан оператор звонящего.")
+        print("Помилка! Неправельно введено оператор вихідного дзвінка.")
         return None
     if operator_to not in tariff_rates:
-        print("Ошибка! Неправильно указан оператор принимающего звонок.")
+        print("Помилка! Невірно вказаний оператор приймаючий звінок.")
         return None
 
-    # Проверяем, что стоимость разговора положительна
     if call_cost <= 0:
-        print("Ошибка! Стоимость разговора должна быть положительной.")
+        print("Помилка! Вартість зозмови повинна бути додатня.")
         return None
 
-    # Рассчитываем стоимость разговора
     rate_from = tariff_rates[operator_from]
     rate_to = tariff_rates[operator_to]
     total_cost = call_cost * rate_from / rate_to
@@ -73,15 +69,13 @@ def calculate_call_cost(call_cost, operator_from, operator_to):
     return total_cost
 
 
-# Вводим данные от пользователя
-call_cost = float(input("Введите стоимость разговора: "))
-operator_from = input("Введите оператор звонящего (МТС, Билайн, Мегафон, Теле2): ").strip().capitalize()
-operator_to = input("Введите оператор принимающего звонок (МТС, Билайн, Мегафон, Теле2): ").strip().capitalize()
+call_cost = float(input("Введіть вартість розмови: "))
+operator_from = input("Введіть оператора вихідного дзвінка (Київстар, Vodafone Україна, lifecell, 3Mob): ").strip().capitalize()
+operator_to = input("Введіть оператора приймаючопо розмову (Київстар, Vodafone Україна, lifecell, 3Mob): ").strip().capitalize()
 
-# Вычисляем и выводим стоимость разговора
 result = calculate_call_cost(call_cost, operator_from, operator_to)
 if result is not None:
-    print(f"Стоимость разговора: {result}")
+    print(f"Вартисть розмови: {result}")
 
 
 
@@ -93,3 +87,30 @@ if result is not None:
 # нарахуйте йому премію 200$ та виведіть підсумки на екран.
 
 print("\nTask 4")
+
+def calculate_salary(sales):
+    base_salary = 200
+    if sales <= 500:
+        commission = sales * 0.03
+    elif sales <= 1000:
+        commission = sales * 0.05
+    else:
+        commission = sales * 0.08
+        total_salary = base_salary + commission
+        return total_salary
+
+sales_manager_1 = float(input("Введіть рівень продажу для менеджера 1: "))
+sales_manager_2 = float(input("Введіть рівень продажу для менеджера 2: "))
+sales_manager_3 = float(input("Введіть рівень продажу для менеджера 3: "))
+salary_manager_1 = calculate_salary(sales_manager_1)
+salary_manager_2 = calculate_salary(sales_manager_2)
+salary_manager_3 = calculate_salary(sales_manager_3)
+salaries = [salary_manager_1, salary_manager_2, salary_manager_3]
+best_manager_index = salaries.index(max(salaries))
+salaries[best_manager_index] += bonus
+
+print("\nЗарплати менеджерів:")
+print(f"Менеджер 1: ${salary_manager_1:.2f}")
+print(f"Менеджер 2: ${salary_manager_2:.2f}")
+print(f"Менеджер 3: ${salary_manager_3:.2f}")
+print(f"\nНайкращий менеджер: Менеджер {best_manager_index + 1} з зарплатою: ${salaries[best_manager_index]:.2f}")

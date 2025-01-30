@@ -131,7 +131,7 @@ class Human:
         if self.job is None:
             self.get_job()
             print(f"I got job {self.job.job} with salary {self.job.salary}")
-        self.day_index(100)
+        self.day_index()
         #Доробіть  симуліцію життя персонажа в цьому методі напишіть код нижче
 
 
