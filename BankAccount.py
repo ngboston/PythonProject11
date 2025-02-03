@@ -62,24 +62,22 @@ class BankAccount:
             for amt in amount:
                 self.balance -= amt
                 self.transactions.append((amt, "Withdraw"))
-         elif currency:
+        elif currency:
                     exchange_rate = 40
-            if currency == "USD":
-                self.balance -= amount * exchange_rate
-                self.transactions.append((amount, "Withdraw in USD"))
-                else:
-                    self.balance -= amount
-                    self.transactions.append((amount, "Withdraw"))
-                else:
-                    self.balance -= amount
-                    self.transactions.append((amount, "Withdraw"))
+        if currency == "USD":
+            self.balance -= amount * exchange_rate
+            self.transactions.append((amount, "Withdraw in USD"))
+        else:
+            self.balance -= amount
+            self.transactions.append((amount, "Withdraw"))
+
 
 account1 = BankAccount("Alice", 1000)
 account1.withdraw(100) # снятие 100
 account1.withdraw(50, "USD") # снятие 50 в USD
-account1.withdraw([20, 30, 50]) # снятие списком
+account1.withdraw([20, 30, 50])
 
-print(account1.current_balance()) # Вывод текущего баланса
+print(account1.current_balance())
 
 class BankAccount:
 
@@ -87,10 +85,10 @@ class BankAccount:
 
 
     def deposit(self, amount, comment=None):
-# (описание метода deposit)
+
 
     def withdraw(self, amount, currency=None):
-# (описание метода withdraw)
+
 
     def transfer(self, amount, target_account, comment=None):
         if isinstance(amount, list):
@@ -101,7 +99,7 @@ class BankAccount:
             self.withdraw(amount)
             target_account.deposit(amount, comment)
 
-# Примеры использования
+
 account1 = BankAccount("Alice", 1000)
 account2 = BankAccount("Bob", 500)
 
@@ -146,36 +144,36 @@ class BankAccount:
 class PremiumAccount(BankAccount):
 
     def deposit(self, amount):
-        bonus = amount * 0.01 # 1% bonus super().deposit(amount + bonus)
+        bonus = amount * 0.01
 
     def withdraw(self, amount):
-        if amount <= self.balance + 1000: # Overdraft limit
+        if amount <= self.balance + 1000:
          self.balance -= amount
          self.transaction_history.append(f'Withdrew: {amount} {self.currency}')
          else:
             print("Overdraft limit exceeded!")
 
     def transfer(self, amount, other_account):
-        commission = amount * 0.005 # 0.5% fee total_amount = amount + commission
+        commission = amount * 0.005
             if total_amount <= self.balance:
                 self.withdraw(total_amount) other_account.deposit(amount)
                 self.transaction_history.append(f'Transferred: {amount} {other_account.currency} to {other_account.owner} with fee: {commission}')
-                # Тестирование
+
 
 account = BankAccount("John Doe", 500)
 premium_account = PremiumAccount("Jane Doe", 1500) # Обычный счет
 
-print(account.get_account_info()) # Вызов без параметров
-print(account.get_account_info(detailed=True)) # Вызов с detailed=True
-print(account.get_account_info(as_dict=True)) # Вызов с as_dict=True
+print(account.get_account_info())
+print(account.get_account_info(detailed=True))
+print(account.get_account_info(as_dict=True))
 
 account.deposit(200)
 account.withdraw(100)
 
-print(account.get_account_info(detailed=True)) # Премиум счет
+print(account.get_account_info(detailed=True))
 
 premium_account.deposit(1000)
 premium_account.withdraw(300)
 premium_account.transfer(400, account)
 
-print(premium_account.get_account_info(detailed=True))  ### Объяснение работы
+print(premium_account.get_account_info(detailed=True))
