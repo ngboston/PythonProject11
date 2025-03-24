@@ -273,7 +273,7 @@ class LibraryRepository:
     def get_readers(self):
         return [EntityFactory.create_entity('reader', **reader_data) for reader_data in self.data['readers']]
 
-# Додаток
+
 class LibraryApp:
     def __init__(self, repository, logger):
         self.repository = repository
